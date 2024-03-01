@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/filmoteka_react/static/css/main.7acaea2f.css",
+    "main.js": "/filmoteka_react/static/js/main.fff7233a.js",
+    "index.html": "/filmoteka_react/index.html",
+    "main.7acaea2f.css.map": "/filmoteka_react/static/css/main.7acaea2f.css.map",
+    "main.fff7233a.js.map": "/filmoteka_react/static/js/main.fff7233a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.fff7233a.js"
+  ]
+}
