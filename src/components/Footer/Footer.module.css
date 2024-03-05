@@ -1,0 +1,29 @@
+.footerContainer {
+    width: 320px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  
+    & span {
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: #545454;
+    }
+  }
+
+  @media screen and (min-width:768px) {
+    .footerContainer {
+        width: 768px;
+    
+        & span {
+          margin-bottom: 0;
+        }
+      }
+  }

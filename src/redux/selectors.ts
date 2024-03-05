@@ -8,3 +8,5 @@ export const selectMovies: (state: RootState) => MovieType[] | null= state => st
 export const selectPage: (state: RootState) => number = state => state.movies.data.page;
 
 export const selectTotalPages: (state: RootState) => number = state => state.movies.data.total_pages;
+
+export const selectGenres = (state: RootState) => state.genres.data;

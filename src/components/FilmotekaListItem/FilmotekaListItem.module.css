@@ -1,0 +1,54 @@
+.filmotekaItem {
+  margin-bottom: 20px;
+}
+
+.filmotekaImg {
+  width: 100%;
+}
+
+.filmotekaTitle {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
+
+.filmotekaDiscription {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #ff6b08;
+}
+
+
+@media screen and (min-width: 768px) {
+  .filmotekaItem {
+    width: 336px;
+  }
+
+  .filmotekaThumb {
+    width: 100%;
+    height: 455px;
+    cursor: pointer;
+  }
+
+  .filmotekaImg {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .filmotekaItem {
+    width: 393px;
+  }
+
+  .filmotekaThumb {
+    width: 100%;
+    height: 574px;
+  }
+  
+}

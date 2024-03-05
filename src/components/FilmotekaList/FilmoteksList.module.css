@@ -1,0 +1,14 @@
+@media screen and (min-width: 768px) {
+  .filmotekaList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .filmotekaList {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
