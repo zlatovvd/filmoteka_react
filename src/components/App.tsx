@@ -10,7 +10,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

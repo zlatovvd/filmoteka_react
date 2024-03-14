@@ -1,18 +1,7 @@
-import { NavLink } from "react-router-dom";
 import css from "./NavList.module.css";
-import styled from "styled-components";
+import { StyledLink } from "../StyledLink/StyledLink";
 
 export const NavList = () => {
-  
-  const StyledLink = styled(NavLink)`
-    &.active::after {
-      display: block;
-      content: "";
-      width: 100%;
-      height: 3px;
-      background: #ff001b;
-    }
-  `;
 
   return (
     <ul className={`${css.navList} list`}>

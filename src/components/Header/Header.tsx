@@ -2,11 +2,11 @@ import { Container } from "../Container/Container";
 import { Navigation } from "../Navigation/Navigation";
 import { SearchForm } from "../SearchForm/SearchForm";
 
-const Header = () => {
+const Header = (props:{setQuery: (search:string)=>void}) => {
   return (
       <Container>
         <Navigation />
-        {/* <SearchForm setSearch={props.setSearch}/> */}
+        <SearchForm setQuery={props.setQuery}/>
       </Container>
   );
 };

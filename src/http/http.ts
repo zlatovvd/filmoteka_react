@@ -1,8 +1,12 @@
 import axios from "axios";
 
-export const fetchApi = async (page: number = 1, query: string = '') => {
+export const fetchApi = async ({page, query}) => {
   const baseUrl = 'https://api.themoviedb.org/3';
   const apiKey = 'bf849ac9154ddcf14074361fb0f94011';
+
+  if(!page) {
+    page = 1;
+  }
 
   const url =
     query !== ""

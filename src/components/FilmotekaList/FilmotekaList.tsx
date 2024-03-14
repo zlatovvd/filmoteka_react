@@ -1,19 +1,18 @@
 import css from "./FilmoteksList.module.css";
 import { Container } from "../Container/Container";
-import { FilmotekaListItem } from "../FilmotekaListItem/FilmoteksListItem";
+import { FilmotekaListItem } from "../FilmotekaListItem/FilmotekaListItem";
 import { GenreType } from "../../types/GenreType";
 import { MovieType } from "../../types/MovieType";
+import { createGenreStr } from "../../utils/createGenreStr";
 
 type listProps = {
   data:MovieType[];
   genre: GenreType;
-  // getMovieDetails: (movie:DataProps)=>void;
 };
 
 export const FilmotekaList = ({
   data,
   genre,
-  // getMovieDetails,
 }: listProps) => {
 
   return (
@@ -23,8 +22,7 @@ export const FilmotekaList = ({
             <FilmotekaListItem
               key={item.id}
               movie={item}
-              genre={genre}
-              // getMovieDetails={getMovieDetails}
+              genre={createGenreStr(item.genre_ids, genre)}
             />
           ))}
         </ul>

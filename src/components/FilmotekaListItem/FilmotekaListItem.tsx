@@ -1,14 +1,12 @@
 import css from "./FilmotekaListItem.module.css";
-import { GenreType } from "../../types/GenreType";
-import { createGenreStr } from "../../utils/createGenreStr";
 import { MovieType } from "../../types/MovieType";
 import { useAppDispatch } from "../../hookes/redux";
 import { openModal } from "../../redux/modalSlice";
+import { movieDetails } from "../../redux/moviesSlice";
 
 type listItem = {
   movie: MovieType;
-  genre: GenreType;
-  // getMovieDetails: (movie: DataProps) => void;
+  genre: string;
 };
 
 export const FilmotekaListItem = (props: listItem) => {
@@ -16,9 +14,8 @@ export const FilmotekaListItem = (props: listItem) => {
   const dispatch = useAppDispatch()
 
   const handleFimotekaItemClick = () => {
-    // props.getMovieDetails(props.movie);
+    dispatch(movieDetails(props.movie));
     dispatch(openModal());
-
   };
 
   const postersPath = "https://image.tmdb.org/t/p/w500";
@@ -37,8 +34,7 @@ export const FilmotekaListItem = (props: listItem) => {
           {props.movie.title.toUpperCase()}
         </h2>
         <p className={css.filmotekaDiscription}>
-          {createGenreStr(props.movie.genre_ids, props.genre)} |{" "}
-          {new Date(props.movie.release_date).getFullYear()}
+          {`${props.genre} ${new Date(props.movie.release_date).getFullYear()}`}
         </p>
       </div>
     </li>

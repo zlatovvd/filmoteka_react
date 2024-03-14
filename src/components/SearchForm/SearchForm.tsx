@@ -1,7 +1,7 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import css from "./SearchForm.module.css";
 
-export const SearchForm = (props:{setSearch: (search:string) => void}) => {
+export const SearchForm = (props:{setQuery: (search:string) => void}) => {
 
   const [search, setSearch] = useState<string>('')
 
@@ -11,7 +11,8 @@ export const SearchForm = (props:{setSearch: (search:string) => void}) => {
 
   const handleSubmit = (e:React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    props.setSearch(search);
+    props.setQuery(search);
+    setSearch('');
   }
 
   return (

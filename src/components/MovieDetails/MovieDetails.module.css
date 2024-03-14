@@ -1,0 +1,134 @@
+.modalImgWrapper {
+  width: 240px;
+  height: 358px;
+  margin-bottom: 20px;
+}
+
+.modalImgWrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalDiscriptionItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.modalDiscriptionTitle {
+  display: inline-block;
+  width: 108px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
+}
+
+.modalValue {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
+
+.modal-value.active {
+  padding: 1px 10px;
+  color: #ffffff;
+  background: #ff6b01;
+  border-radius: 5px;
+}
+
+.modalAbout {
+  font-size: 12px;
+  line-height: 1.33;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.modalAboutText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  margin-bottom: 20px;
+}
+
+.modalBtnWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modalBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 110px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+.modalBtn:hover,
+.modalBtn.active {
+  color: #ffffff;
+  background: #ff6b01;
+  border: transparent;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .modalImgWrapper {
+    width: 264px;
+    height: 374px;
+    margin-right: 68px;
+  }
+
+  .modalDiscriptionWrapper {
+    width: 264px;
+  }
+
+  .modal-btn {
+    width: 125px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modalImgWrapper {
+    width: 375px;
+    height: 478px;
+    margin-right: 16px;
+  }
+
+  .modalDiscriptionWrapper {
+    width: 391px;
+  }
+
+  .modalTitle {
+    font-size: 30px;
+  }
+
+  .modalBtnWrapper {
+    justify-content: flex-start;
+  }
+
+  .modalBtn {
+    width: 125px;
+  }
+
+  .modalBtn:first-child {
+    margin-left: 8px;
+    margin-right: 15px;
+  }
+}
