@@ -1,30 +1,20 @@
-import { useEffect, useState } from "react";
 import css from "./Pagination.module.css";
 import { PaginationItem, PaginationItemNext } from "./PaginationItem";
 import left from "../../images/arrow-left.svg";
 import right from "../../images/arrow-right.svg";
 import more from "../../images/more.svg";
-import { useSearchParams } from "react-router-dom";
+import { usePageParams } from "../../hookes/usePageParams";
 
 type PaginationProps = {
-  currentPage:number;
   totalPages:number;
-  handleChangePagination: (currentPage:number)=>void;
 }
 
 export const Pagination = (props: PaginationProps) => {
 
-  const {handleChangePagination} = props;
+  const {page, updatePage} = usePageParams();
+
+  let currentPage:number = Number(page);
   
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const [currentPage, setCurrentPage] = useState<number>(Number(searchParams.get('page')) ?? 1);
-
-  //setCurrentPage(Number(searchParams.get('page')) ?? 1);
-
-  console.log('pagin page', currentPage);
-
   const arr: number[] = [];
 
   let startPage: number = 1;
@@ -33,31 +23,28 @@ export const Pagination = (props: PaginationProps) => {
   let rightEmpty = false;
 
   const handlePageClick = (page:number) => {
-    setCurrentPage(page);
+    currentPage = page;
+    updatePage(currentPage);
   }
 
   const handleRightClick = () => {
-    setCurrentPage((prev) => {
-      if (prev === props.totalPages) return props.totalPages;
-      return prev + 1;
-    });
+    currentPage = currentPage===props.totalPages ? props.totalPages : currentPage + 1;
+    updatePage(currentPage);
   };
 
   const handleRightClickNext = () => {
-    setCurrentPage(
-      currentPage + 5 <= props.totalPages ? currentPage + 5 : props.totalPages
-    );
+    currentPage = currentPage + 5 <= props.totalPages ? currentPage + 5 : props.totalPages
+    updatePage(currentPage);
   };
 
   const handleLeftClick = () => {
-    setCurrentPage((prev) => {
-      if (prev === 1) return 1;
-      return prev - 1;
-    });
+    currentPage = currentPage === 1 ? 1 : currentPage - 1;
+    updatePage(currentPage);
   };
 
   const handleLeftClickNext = () => {
-    setCurrentPage(currentPage - 5 >= 1 ? currentPage - 5 : 1);
+    currentPage = currentPage - 5 >= 1 ? currentPage - 5 : 1;
+    updatePage(currentPage);
   };
 
   if (props.totalPages <= 5) {
@@ -92,13 +79,6 @@ export const Pagination = (props: PaginationProps) => {
     arr.push(i);
   }
 
-  useEffect(() => {
-    //handleChangePagination(currentPage);
-    searchParams.set('page', currentPage.toString());
-    console.log('use pagin page', currentPage);
-    setSearchParams(searchParams);
-  }, [currentPage]);
-
   return (
     <ul className={`${css.paginationList} list`}>
       <PaginationItemNext handleClickNext={handleLeftClick} isStyled>
@@ -128,7 +108,7 @@ export const Pagination = (props: PaginationProps) => {
           </PaginationItemNext>
           <PaginationItem
             page={props.totalPages}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={handlePageClick}
           />
         </>
       )}

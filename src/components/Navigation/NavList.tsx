@@ -11,7 +11,7 @@ export const NavList = () => {
         </StyledLink>
       </li>
       <li className={css.navListItem}>
-        <StyledLink to={"/library"} className={`${css.navListLink} link`}>
+        <StyledLink to={"/library/watched"} className={`${css.navListLink} link`}>
           {"My library"}
         </StyledLink>
       </li>

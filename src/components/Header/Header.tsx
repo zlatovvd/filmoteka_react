@@ -1,12 +1,12 @@
 import { Container } from "../Container/Container";
 import { Navigation } from "../Navigation/Navigation";
-import { SearchForm } from "../SearchForm/SearchForm";
+import { ReactNode } from 'react';
 
-const Header = (props:{setQuery: (search:string)=>void}) => {
+const Header = (props:{children:ReactNode} ) => {
   return (
       <Container>
         <Navigation />
-        <SearchForm setQuery={props.setQuery}/>
+        {props.children}
       </Container>
   );
 };

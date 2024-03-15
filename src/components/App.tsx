@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAppDispatch } from "../hookes/redux";
 import { HomePages } from "../pages/HomePages";
+import { LibraryPage } from "../pages/LibraryPage/LibraryPage";
 import { getGenres } from "../redux/genresThunk";
 
 export const App = () => {
@@ -16,6 +17,7 @@ export const App = () => {
     <div className="App">
       <Routes>
         <Route path='/' element={<HomePages/>}/>
+        <Route path='/library/:libName' element={<LibraryPage/>}/>
       </Routes>
     </div>
   );

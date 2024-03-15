@@ -1,17 +1,20 @@
 import { useState } from "react";
+import { usePageParams } from "../../hookes/usePageParams";
 import css from "./SearchForm.module.css";
 
-export const SearchForm = (props:{setQuery: (search:string) => void}) => {
+export const SearchForm = () => {
 
   const [search, setSearch] = useState<string>('')
 
+  const {updateQuery} = usePageParams();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value)
+    setSearch(event.target.value);
   }
 
   const handleSubmit = (e:React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    props.setQuery(search);
+    updateQuery(search);
     setSearch('');
   }
 
