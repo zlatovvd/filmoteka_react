@@ -1,5 +1,6 @@
 .header {
     width: 320px;
+    height: 230px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
@@ -20,6 +21,7 @@
   @media screen and (min-width: 768px) {
     .header {
       width: 768px;
+      height: 216px;
       padding-top: 40px;
       padding-bottom: 81px;
       background-image: url("../images/background-768.png");

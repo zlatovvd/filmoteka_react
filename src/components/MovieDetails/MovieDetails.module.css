@@ -80,7 +80,11 @@
   border-radius: 5px;
 }
 
-/* .modalBtn:hover, */
+.modalBtn:hover {
+  cursor: pointer;
+  border-color: #ff6b01;
+}
+
 .modalBtn.active {
   color: #ffffff;
   background: #ff6b01;

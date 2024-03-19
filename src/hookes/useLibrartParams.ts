@@ -3,6 +3,7 @@ import { MovieType } from '../types/MovieType';
 import { useAppSelector } from './redux';
 
 export const useLibraryParams = () => {
+
   const { libName } = useParams();
 
   const wathed = useAppSelector(state => state.watched.data);
@@ -24,5 +25,5 @@ export const useLibraryParams = () => {
 
   const totalPages = Math.ceil(data.length / 10);
 
-  return { watchedPage, queuePage, data, totalPages };
+  return { watchedPage, queuePage, data, totalPages};
 };

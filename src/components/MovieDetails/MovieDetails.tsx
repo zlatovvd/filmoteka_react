@@ -9,10 +9,9 @@ import { addQueue, removeQueue } from '../../redux/queueSlice';
 
 type MovieProps = {
   genre: GenreType;
-  setQueue: (data: MovieType) => void;
 };
 
-export const MovieDetails = ({ genre, setQueue }: MovieProps) => {
+export const MovieDetails = ({ genre }: MovieProps) => {
   const postersPath = 'https://image.tmdb.org/t/p/w500';
   
   const dispatch = useAppDispatch();
@@ -54,8 +53,6 @@ export const MovieDetails = ({ genre, setQueue }: MovieProps) => {
       }
     }
   };
-
-  console.log('is watched', isWatched);
 
   return (
     <>

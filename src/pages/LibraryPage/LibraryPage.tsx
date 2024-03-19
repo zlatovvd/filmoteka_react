@@ -1,31 +1,40 @@
 import { Alert } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Container } from '../../components/Container/Container';
 import { FilmotekaList } from '../../components/FilmotekaList/FilmotekaList';
 import { Footer } from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import { LibraryNav } from '../../components/LibraryNav/LibraryNav';
+import { Modal } from '../../components/Modal/Modal';
+import { MovieDetails } from '../../components/MovieDetails/MovieDetails';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { useAppSelector } from '../../hookes/redux';
 import { useLibraryParams } from '../../hookes/useLibrartParams';
+import { usePageParams } from '../../hookes/usePageParams';
 import { selectGenres } from '../../redux/selectors';
 import { GenreType } from '../../types/GenreType';
 import { MovieType } from '../../types/MovieType';
 import css from './LibraryPage.module.css';
 
 export const LibraryPage: React.FC = () => {
+  const { page } = usePageParams();
+  const { data, totalPages } = useLibraryParams();
+
   const genres: GenreType = useAppSelector(selectGenres);
 
   const error: string = useAppSelector(state => state.watched.error);
 
   const [movies, setMovies] = useState<MovieType[]>([]);
 
-  const {data, totalPages} = useLibraryParams();
+  const getData = useCallback(() => {
+    const start = Number(page) * 10 - 10;
+    const end = start + 10;
+    setMovies(data.slice(start, end));
+  }, [page, data]);
 
   useEffect(() => {
-   setMovies(data);
-  }, [data, setMovies]);
-
+    getData();
+  }, [getData]);
 
   return (
     <>
@@ -35,7 +44,7 @@ export const LibraryPage: React.FC = () => {
         </Header>
       </header>
 
-      <main className="main">
+      <main className={css.main}>
         <h1 hidden>Filmoteka</h1>
         {error && (
           <Container>
@@ -51,6 +60,9 @@ export const LibraryPage: React.FC = () => {
       <footer className={css.footer}>
         <Footer />
       </footer>
+      <Modal>
+        <MovieDetails genre={genres} />
+      </Modal>
     </>
   );
 };

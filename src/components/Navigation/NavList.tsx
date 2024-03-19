@@ -1,7 +1,10 @@
 import css from "./NavList.module.css";
 import { StyledLink } from "../StyledLink/StyledLink";
+import { useParams } from "react-router-dom";
 
 export const NavList = () => {
+
+  const { libName } = useParams();
 
   return (
     <ul className={`${css.navList} list`}>
@@ -11,7 +14,7 @@ export const NavList = () => {
         </StyledLink>
       </li>
       <li className={css.navListItem}>
-        <StyledLink to={"/library/watched"} className={`${css.navListLink} link`}>
+        <StyledLink to={`/library/${libName!=='queue' ? 'watched' : 'queue'}`} className={`${css.navListLink} link`}>
           {"My library"}
         </StyledLink>
       </li>

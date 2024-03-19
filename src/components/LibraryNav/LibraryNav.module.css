@@ -17,7 +17,11 @@
     color: #ffffff;
     cursor: pointer;
   
-    &:hover,
+    &:hover {
+      border-color: #ff6b01;
+    }
+
+    
     &.active {
       border-color: transparent;
       background: #ff6b01;

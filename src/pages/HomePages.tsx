@@ -2,7 +2,7 @@ import css from './HomePage.module.css';
 
 import { useAppDispatch, useAppSelector } from '../hookes/redux';
 import { MovieType } from '../types/MovieType';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getMovies } from '../redux/moviesThunk';
 import {
   selectGenres,
@@ -24,38 +24,27 @@ import { SearchForm } from '../components/SearchForm/SearchForm';
 export const HomePages = () => {
   const dispatch = useAppDispatch();
 
-  const movies: MovieType[] | null = useAppSelector(selectMovies);
+  const movies: MovieType[] = useAppSelector(selectMovies) ?? [];
   const genres: GenreType = useAppSelector(selectGenres);
   const totalPages: number = useAppSelector(selectTotalPages);
   const error: string = useAppSelector(state => state.movies.error);
 
-  const {page, query} = usePageParams();
-
-  const [queue, setQueue] = useState<MovieType[]>([]);
+  const { page, query } = usePageParams();
 
   console.log('data', movies);
 
-  const setQueueHandler = (data: MovieType) => {
-    if (!queue.find(option => option.id === data.id)) {
-      setQueue(prev => [...prev, data]);
-    } else {
-      console.log('queue is already');
-    }
-  };
-
   useEffect(() => {
-    console.log('use effect page', page);
-      dispatch(getMovies({ page: Number(page), query }));
-  }, [ page, query, dispatch]);
+    dispatch(getMovies({ page: Number(page), query }));
+  }, [page, query, dispatch]);
 
   return (
     <>
       <header className={css.header}>
         <Header>
-          <SearchForm/>
+          <SearchForm />
         </Header>
       </header>
-      <main className="main">
+      <main className={css.main}>
         <h1 hidden>Filmoteka</h1>
         {error && (
           <Container>
@@ -65,20 +54,13 @@ export const HomePages = () => {
         {!error && movies && genres && (
           <FilmotekaList data={movies} genre={genres} />
         )}
-        {totalPages > 1 && (
-          <Pagination
-            totalPages={totalPages}
-          />
-        )}
+        {totalPages > 1 && <Pagination totalPages={totalPages} />}
       </main>
       <footer className={css.footer}>
         <Footer />
       </footer>
       <Modal>
-        <MovieDetails
-          genre={genres}
-          setQueue={setQueueHandler}
-        />
+        <MovieDetails genre={genres} />
       </Modal>
     </>
   );
