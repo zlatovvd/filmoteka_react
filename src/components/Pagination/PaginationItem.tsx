@@ -19,9 +19,9 @@ export const PaginationItem = ({
 
   return (
     <li className={`${css.paginationItem} ${isActive ? css.active : ""}`}>
-      <a href="/#" className={css.paginationLink} onClick={handleClick}>
+      { isActive ? <span className={css.paginationLink}>{page}</span> : <a href="/#" className={css.paginationLink} onClick={handleClick} >
         {page}
-      </a>
+      </a>}
     </li>
   );
 };
@@ -30,6 +30,7 @@ export const PaginationItemNext = (props: {
   handleClickNext: () => void;
   children: ReactNode;
   isStyled?: boolean;
+  totalPages?: number;
 }) => {
   const handleClickNext = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();

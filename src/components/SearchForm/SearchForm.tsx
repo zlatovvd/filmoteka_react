@@ -2,7 +2,7 @@ import { useState } from "react";
 import { usePageParams } from "../../hookes/usePageParams";
 import css from "./SearchForm.module.css";
 
-export const SearchForm = () => {
+export const SearchForm = (props:{error:string}) => {
 
   const [search, setSearch] = useState<string>('')
 
@@ -31,7 +31,7 @@ export const SearchForm = () => {
         />
         <button type="submit" className={css.searchBtn}></button>
         <p className={css.searchError}>
-          Search result not successful. Enter the correct movie name and
+          {props.error}
         </p>
       </div>
     </form>

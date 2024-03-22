@@ -1,5 +1,4 @@
 .searchContainer {
-    position: relative;
     width: 1180px;
     height: 20px;
     margin-left: auto;
@@ -39,7 +38,9 @@
   }
   
   .searchError {
-    display: none;
+    /* display: none; */
+    width: 280px;
+    text-align: center;
     margin-top: 16px;
     font-weight: 400;
     font-size: 14px;
@@ -51,6 +52,11 @@
     
     .searchContainer {
       width: 336px;
+    }
+
+    .searchError {
+      width: 400px;
+      text-align: left;
     }
 
   }

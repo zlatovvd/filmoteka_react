@@ -28,8 +28,10 @@ export const Pagination = (props: PaginationProps) => {
   }
 
   const handleRightClick = () => {
-    currentPage = currentPage===props.totalPages ? props.totalPages : currentPage + 1;
-    updatePage(currentPage);
+    if(currentPage!==props.totalPages) {
+      currentPage = currentPage + 1;
+      updatePage(currentPage);
+    }
   };
 
   const handleRightClickNext = () => {
@@ -38,8 +40,11 @@ export const Pagination = (props: PaginationProps) => {
   };
 
   const handleLeftClick = () => {
-    currentPage = currentPage === 1 ? 1 : currentPage - 1;
-    updatePage(currentPage);
+    if (currentPage!==1) {
+      currentPage = currentPage - 1;
+      updatePage(currentPage);
+    }
+
   };
 
   const handleLeftClickNext = () => {

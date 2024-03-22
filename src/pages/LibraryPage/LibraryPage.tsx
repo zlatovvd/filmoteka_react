@@ -1,5 +1,7 @@
+import css from './LibraryPage.module.css';
+
 import { Alert } from '@mui/material';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { Container } from '../../components/Container/Container';
 import { FilmotekaList } from '../../components/FilmotekaList/FilmotekaList';
 import { Footer } from '../../components/Footer/Footer';
@@ -14,7 +16,7 @@ import { usePageParams } from '../../hookes/usePageParams';
 import { selectGenres } from '../../redux/selectors';
 import { GenreType } from '../../types/GenreType';
 import { MovieType } from '../../types/MovieType';
-import css from './LibraryPage.module.css';
+import { ScrollTo } from 'react-scroll-to/dist';
 
 export const LibraryPage: React.FC = () => {
   const { page } = usePageParams();
@@ -26,6 +28,8 @@ export const LibraryPage: React.FC = () => {
 
   const [movies, setMovies] = useState<MovieType[]>([]);
 
+  const scrollRef = useRef<HTMLButtonElement>(null)
+
   const getData = useCallback(() => {
     const start = Number(page) * 10 - 10;
     const end = start + 10;
@@ -34,6 +38,7 @@ export const LibraryPage: React.FC = () => {
 
   useEffect(() => {
     getData();
+    scrollRef.current?.click();
   }, [getData]);
 
   return (
@@ -60,6 +65,11 @@ export const LibraryPage: React.FC = () => {
       <footer className={css.footer}>
         <Footer />
       </footer>
+      <ScrollTo>
+        {({ scroll }) => (
+          <button type='button' ref={scrollRef} onClick={() => scroll({ y: 0, smooth: true  })} hidden></button>
+        )}
+    </ScrollTo>
       <Modal>
         <MovieDetails genre={genres} />
       </Modal>

@@ -1,0 +1,57 @@
+/* h1 {
+  display: block;
+ 
+  margin-bottom: 100px;
+} */
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  color: #F3F3F3;
+  background-color: #1E1E1E;
+  height: 90vh;
+  width: 90vw;
+  margin: 5vh 5vw;
+  border-radius: 55px;
+}
+
+.notFoundMessage {
+  padding-top: 100px;
+  padding-left: 50px;
+
+  & h1 {
+    font-size: 150px;
+    margin-bottom: 60px;
+  }
+
+  & h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  & p {
+    font-size: 25px;
+    margin-bottom: 80px;
+  }
+}
+
+.notFoundLink {
+  font-size: 30px;
+  color: rgba(255, 107, 8, 1);
+}
+
+.notFoundImage {
+  height: 100%;
+  width: 50%;
+  
+
+  & img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit:fill;
+    border-radius: 55px;  
+  }
+
+}
+
